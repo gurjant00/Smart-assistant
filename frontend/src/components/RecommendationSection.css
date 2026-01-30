@@ -1,0 +1,125 @@
+.recommendation-section {
+    padding: var(--spacing-xxl) 0;
+    background: linear-gradient(to bottom, #e8f5e9, #f1f8e9);
+    animation: fadeIn 0.5s ease;
+}
+
+.crop-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.crop-card {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease both;
+}
+
+.crop-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient-primary);
+}
+
+.crop-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-green);
+}
+
+.crop-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.crop-icon {
+    font-size: 3rem;
+}
+
+.crop-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-green);
+}
+
+.crop-details {
+    margin: var(--spacing-md) 0;
+}
+
+.crop-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--gray);
+}
+
+.crop-detail:last-child {
+    border-bottom: none;
+}
+
+.crop-label {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.crop-value {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.profit-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.profit-high {
+    background: rgba(76, 175, 80, 0.15);
+    color: var(--light-green);
+}
+
+.profit-medium {
+    background: rgba(255, 215, 0, 0.15);
+    color: #d4a800;
+}
+
+.profit-low {
+    background: rgba(139, 69, 19, 0.15);
+    color: var(--earth-brown);
+}
+
+.crop-recommendation {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--light-gray);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .crop-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .crop-name {
+        font-size: 1.5rem;
+    }
+}

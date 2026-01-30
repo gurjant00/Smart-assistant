@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Farmer Assistant - Predict Weather, Analyze Crop Prices, and Grow Smart">
+    <title>Smart Farmer Assistant | Hackathon Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Smart Farmer Assistant</h1>
+                <p class="hero-tagline">Predict Weather. Analyze Crop Prices. Grow Smart.</p>
+                <button class="btn-primary" onclick="scrollToSection('input-section')">
+                    Get Started
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Input Section -->
+    <section id="input-section" class="input-section">
+        <div class="container">
+            <h2 class="section-title">Plan Your Farming</h2>
+            <p class="section-subtitle">Select your location and season to get personalized recommendations</p>
+            
+            <div class="input-card">
+                <form id="farmerForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <select id="state" name="state" required>
+                                <option value="">Select State</option>
+                                <option value="punjab">Punjab</option>
+                                <option value="haryana">Haryana</option>
+                                <option value="uttar-pradesh">Uttar Pradesh</option>
+                                <option value="madhya-pradesh">Madhya Pradesh</option>
+                                <option value="maharashtra">Maharashtra</option>
+                                <option value="karnataka">Karnataka</option>
+                                <option value="andhra-pradesh">Andhra Pradesh</option>
+                                <option value="tamil-nadu">Tamil Nadu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City / District</label>
+                            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="season">Season</label>
+                            <select id="season" name="season" required>
+                                <option value="">Select Season</option>
+                                <option value="kharif">Kharif (Monsoon)</option>
+                                <option value="rabi">Rabi (Winter)</option>
+                                <option value="zaid">Zaid (Summer)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="crop">Crop (Optional)</label>
+                            <select id="crop" name="crop">
+                                <option value="">Select Crop</option>
+                                <option value="rice">Rice</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="cotton">Cotton</option>
+                                <option value="sugarcane">Sugarcane</option>
+                                <option value="maize">Maize</option>
+                                <option value="pulses">Pulses</option>
+                                <option value="vegetables">Vegetables</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        Analyze & Get Recommendations
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Container (Hidden by default) -->
+    <div id="results-container" class="results-container">
+        
+        <!-- Weather Prediction Section -->
+        <section id="weather-section" class="weather-section">
+            <div class="container">
+                <h2 class="section-title">Weather Prediction</h2>
+                <p class="section-subtitle">7-Day forecast for <span id="location-name">your area</span></p>
+                
+                <div class="weather-cards">
+                    <!-- Weather cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Crop Price Prediction Section -->
+        <section id="price-section" class="price-section">
+            <div class="container">
+                <h2 class="section-title">Crop Price Prediction</h2>
+                <p class="section-subtitle">Market trends for <span id="selected-crop-name">selected crops</span></p>
+                
+                <div class="price-grid">
+                    <div class="price-card">
+                        <h3>Current Market Price</h3>
+                        <div class="current-price">
+                            <span class="price-value" id="current-price">₹2,850</span>
+                            <span class="price-unit">per quintal</span>
+                        </div>
+                    </div>
+
+                    <div class="price-card">
+                        <h3>Predicted Price (30 days)</h3>
+                        <div class="predicted-price">
+                            <span class="price-value trend-up" id="predicted-price">₹3,200</span>
+                            <span class="price-change" id="price-change">+12.3%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crop Recommendation Section -->
+        <section id="recommendation-section" class="recommendation-section">
+            <div class="container">
+                <h2 class="section-title">Recommended Crops</h2>
+                <p class="section-subtitle">Best crops for <span id="selected-season">this season</span> based on weather and market analysis</p>
+                
+                <div class="crop-cards" id="crop-cards">
+                    <!-- Crop recommendation cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why This Helps Farmers</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌦️</div>
+                    <h3>Accurate Weather Forecasts</h3>
+                    <p>Plan your farming activities with 7-day weather predictions including temperature, rainfall, and humidity data.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Price Trend Analysis</h3>
+                    <p>Make informed decisions by understanding crop price trends and predicted market values for better profits.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌾</div>
+                    <h3>Smart Crop Selection</h3>
+                    <p>Get AI-powered recommendations on which crops to plant based on season, weather, and market conditions.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Maximize Profits</h3>
+                    <p>Optimize your farming strategy to achieve higher yields and better returns on investment.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌱</div>
+                    <h3>Sustainable Farming</h3>
+                    <p>Reduce crop failures and resource waste by planting the right crops at the right time.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Easy to Use</h3>
+                    <p>Simple, mobile-friendly interface designed specifically for farmers with clear insights and recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Smart Farmer Assistant | Hackathon Demo Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

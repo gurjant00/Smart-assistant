@@ -1,0 +1,209 @@
+/* ===========================
+   CSS Reset & Root Variables
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Agriculture Theme Colors */
+    --primary-green: #2d7a3e;
+    --dark-green: #1a5026;
+    --light-green: #4caf50;
+    --accent-green: #66bb6a;
+    --earth-brown: #8b4513;
+    --light-brown: #a0826d;
+    --warm-beige: #f5f1e8;
+    --sky-blue: #87ceeb;
+    --sunny-yellow: #ffd700;
+    --cream: #fffef7;
+
+    /* Neutral Colors */
+    --white: #ffffff;
+    --off-white: #fafafa;
+    --light-gray: #f0f0f0;
+    --gray: #e0e0e0;
+    --text-dark: #2c3e50;
+    --text-light: #6c757d;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #2d7a3e 0%, #4caf50 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(45, 122, 62, 0.95) 0%, rgba(26, 80, 38, 0.95) 100%);
+
+    /* Typography */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 12px 32px rgba(45, 122, 62, 0.15);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* ===========================
+   Global Styles
+   =========================== */
+body {
+    font-family: var(--font-secondary);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--warm-beige);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.section-title {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* ===========================
+   Animations
+   =========================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===========================
+   Utility Classes
+   =========================== */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-message {
+    background-color: #fee;
+    color: #c33;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-sm);
+    text-align: center;
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* ===========================
+   Scroll Behavior
+   =========================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--light-gray);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--primary-green);
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-green);
+}

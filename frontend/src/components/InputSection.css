@@ -1,0 +1,89 @@
+.input-section {
+    padding: var(--spacing-xxl) 0;
+    background: var(--cream);
+}
+
+.input-card {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    animation: fadeInUp 0.6s ease;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--dark-green);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.875rem 1rem;
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    border: 2px solid var(--gray);
+    border-radius: var(--radius-sm);
+    background: var(--off-white);
+    transition: all var(--transition-fast);
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-green);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(45, 122, 62, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+.btn-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-card {
+        padding: var(--spacing-md);
+    }
+}

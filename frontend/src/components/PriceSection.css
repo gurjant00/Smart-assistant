@@ -1,0 +1,102 @@
+.price-section {
+    padding: var(--spacing-xxl) 0;
+    background: linear-gradient(to bottom, #fff8e1, #fffef7);
+    animation: fadeIn 0.5s ease;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.price-card {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: all var(--transition-normal);
+    animation: fadeInUp 0.6s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.price-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.price-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+}
+
+.current-price,
+.predicted-price,
+.profit-potential {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.price-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-green);
+}
+
+.price-value.trend-up {
+    color: var(--light-green);
+}
+
+.price-unit {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.price-change {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--light-green);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.chart-container {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    animation: fadeInUp 0.8s ease;
+}
+
+.chart-title {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    color: var(--dark-green);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .price-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-container {
+        padding: var(--spacing-md);
+    }
+
+    .price-value {
+        font-size: 2rem;
+    }
+}
